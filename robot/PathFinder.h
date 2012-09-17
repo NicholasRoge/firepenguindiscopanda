@@ -1,5 +1,5 @@
 /*
- * Library for servo interaction for firepenguindiscopanda
+ * Library for Serial interfacing for firepenguindiscopanda
  * Author: Nathan Mann, Sam Pierce, Nicholas Roge
  * Copyright 2012, All rights reserved.
  */
