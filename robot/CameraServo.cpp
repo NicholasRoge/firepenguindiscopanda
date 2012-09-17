@@ -16,3 +16,7 @@
  void CameraServo::write(int degrees) {
  	_camera.write(degrees);
  }
+
+ void CameraServo::getCurrent() {
+ 	_current = _camera.read();
+ }

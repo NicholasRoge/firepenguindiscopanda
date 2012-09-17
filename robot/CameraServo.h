@@ -12,8 +12,10 @@ class CameraServo
 	public:
 		CameraServo(int pin);
 		void write(int degrees);
+		void getCurrent();
 	private:
 		Servo _camera;
 		int   _pin;
+		int   _current;
 }
 #endif
