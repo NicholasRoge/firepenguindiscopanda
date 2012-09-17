@@ -5,9 +5,14 @@
  */
 #include "Arduino.h"
 #include "CameraServo.h"
+#include <Servo.h>
 
  CameraServo::CameraServo(int pin)
  {
- 	pinMode(pin, OUTPUT);
+ 	_camera.attatch(pin);
  	_pin = pin;
+ }
+
+ void CameraServo::write(int degrees) {
+ 	_camera.write(degrees);
  }
