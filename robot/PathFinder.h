@@ -13,9 +13,10 @@ class PathFinder
 		PathFinder();
 		void read();
 		void write();
-		int x, y ,z;
+
 	private:
 		static int _rate = 9600;
+		int _x, _y , _z;
 }
 
 #endif
