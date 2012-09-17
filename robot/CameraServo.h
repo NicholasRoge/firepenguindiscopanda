@@ -17,5 +17,8 @@ class CameraServo
 		Servo _camera;
 		int   _pin;
 		int   _current;
+
+		static int servoMax = 180;
+		static int servoMin = 0;
 }
 #endif
