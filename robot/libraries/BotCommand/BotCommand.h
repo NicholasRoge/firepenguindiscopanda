@@ -14,6 +14,7 @@
  	public:
  		BotCommand();
  		~BotCommand();
- 		void getCommand(int command);
+ 		void getCommand();
+ 		int command, direction;
  };
  #endif
