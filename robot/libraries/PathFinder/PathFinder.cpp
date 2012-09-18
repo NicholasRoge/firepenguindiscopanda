@@ -3,8 +3,9 @@
  * Author: Nathan Mann, Sam Pierce, Nicholas Roge
  * Copyright 2012, All rights reserved.
  */
-#include "Adruino.h"
-
+ #include <PathFinder.h>
+ 
+int PathFinder::_rate = 9600;
 PathFinder::Pathfinder() 
 {
 	Serial.begin(_rate);
