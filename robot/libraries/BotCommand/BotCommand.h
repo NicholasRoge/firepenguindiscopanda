@@ -15,6 +15,8 @@
  		BotCommand();
  		~BotCommand();
  		void getCommand();
+ 		void turn();
+ 		void move();
 
  		/*
  		 * servos: 0-180 for rotation in degrees

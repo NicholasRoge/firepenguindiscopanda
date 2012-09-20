@@ -23,3 +23,15 @@ void BotCommand::getCommand() {
 		}
 	}
 }
+
+void turn(byte[] command) {
+	//things with sevrvos 1/2
+}
+
+void move(byte[] command) {
+	//things with motors 1/2
+}
+
+void cam(byte[] command) {
+	//things with camera servo
+}

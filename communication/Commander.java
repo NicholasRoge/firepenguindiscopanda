@@ -18,9 +18,10 @@ public class Commander
 		} catch (SerialPortException ex) {
 			System.out.println(ex);
 		}
-	}
-
-	public void sendCommand(String command) {
+	
+}
+	public void sendCommand(int deg) {
+		String command = Integer.toString(deg);
 		char buf = command.toCharArray();
 		try {
 			serialPort.writeByte((byte)buf[0]);
@@ -29,5 +30,4 @@ public class Commander
 			System.out.println(ex);
 		}
 	}
-
 }
