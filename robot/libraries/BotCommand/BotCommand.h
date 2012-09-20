@@ -15,10 +15,12 @@
  		BotCommand();
  		~BotCommand();
  		void getCommand();
- 		uint8_t servoOne, servoTwo, servoCamera, motorOne, motorTwo;
+
  		/*
- 		 * servos - 0-180 for range of degrees
- 		 * motors - some value between 0-255 or something
+ 		 * servos: 0-180 for rotation in degrees
+ 		 * motors: 0-255 for something or another I guess probably.
  		 */
+ 		uint8_t servoOne, servoTwo, servoCamera, motorOne, motorTwo;
+
  };
  #endif
