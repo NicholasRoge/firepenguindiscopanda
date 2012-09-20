@@ -15,6 +15,10 @@
  		BotCommand();
  		~BotCommand();
  		void getCommand();
- 		int command, direction;
+ 		uint8_t servoOne, servoTwo, servoCamera, motorOne, motorTwo;
+ 		/*
+ 		 * servos - 0-180 for range of degrees
+ 		 * motors - some value between 0-255 or something
+ 		 */
  };
  #endif
