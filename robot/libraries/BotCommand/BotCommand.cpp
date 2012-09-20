@@ -16,8 +16,10 @@ BotCommand::~BotCommand()
 }
 
 void BotCommand::getCommand() {
-	if (Serial.available() > 0) {
-		//need to see some actual input to finish this guy, will do.
+	byte[8] placer;
+	for (int i = 0; i < 8; i++) {
+		if (Serial.available() > 0) {
+			placer[i] = Serial.read();
+		}
 	}
-
 }
