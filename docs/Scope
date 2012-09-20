@@ -1,9 +1,0 @@
-System Scope Document
-3D Modeling using Autonomous Robot
-Project Description
-Mount a 3D camera to a self-powered chassis controlled with a programmed microcontroller. The chassis will be autonomously navigated via programming on the microcontroller. The 3D camera will record point cloud data on a laptop also attached to the chassis.  The point cloud data will then be turned into a 3D model rendered off site then used to create an applet version of the 3D model viewed by the end user on a web page.
-System Capabilities
-Autonomously navigate a self-propelled robot with its own power
-Capture point cloud data using a 3D camera
-Render point cloud data to a 3D model
-Display the 3D model on a web page that the end user can navigate
