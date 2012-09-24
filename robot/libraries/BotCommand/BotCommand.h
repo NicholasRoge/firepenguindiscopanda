@@ -15,6 +15,7 @@
  		BotCommand();
  		~BotCommand();
  		void getCommand();
+ 		void parseCommand();
  		void turn();
  		void move();
 
