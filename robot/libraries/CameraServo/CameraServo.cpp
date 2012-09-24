@@ -1,6 +1,6 @@
 /*
  * Library for servo interaction for firepenguindiscopanda
- * Author: Nathan Mann, Sam Pierce, Nicholas Roge
+ * Author: Nathan Mann
  * Copyright 2012, All rights reserved.
  */
 #include "CameraServo.h"

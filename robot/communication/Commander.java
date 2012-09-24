@@ -1,3 +1,8 @@
+/*
+ * Library for serial communication for firepenguindiscopanda
+ * Author: Nathan Mann
+ * Copyright 2012, All rights reserved.
+ */
 import java.util.Scanner;
 import jssc.SerialPort;
 import jssc.SerialPortList;
