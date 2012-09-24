@@ -31,3 +31,21 @@ public class Commander
 		}
 	}
 }
+
+	public byte[] turn() {
+		byte[2] temp;
+
+		return temp;
+	}
+
+	public byte[] move(int motor) {
+		byte[2] temp;
+
+		return temp;
+	}
+
+	public byte camera() {
+		byte[2] temp;
+
+		return temp;
+	}
