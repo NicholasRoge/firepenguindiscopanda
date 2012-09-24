@@ -16,13 +16,13 @@
  		~BotCommand();
  		void getCommand();
  		void parseCommand();
- 		void turnWheelOne();
- 		void turnWheelTwo();
- 		void turnWheelBoth();
- 		void motorOne();
- 		void motorTwo();
- 		void motorBoth();
- 		void cameraServo();
+ 		void turnWheelOne(byte);
+ 		void turnWheelTwo(byte);
+ 		void turnWheelBoth(byte);
+ 		void motorOne(byte);
+ 		void motorTwo(byte);
+ 		void motorBoth(byte);
+ 		void cameraServo(byte);
 
  		/*
  		 * servos: 0-180 for rotation in degrees

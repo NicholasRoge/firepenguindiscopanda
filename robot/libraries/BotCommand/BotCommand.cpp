@@ -51,30 +51,30 @@ void parseCommand(byte command1, byte command2) {
 	}
 }
 
-void turnWheelOne(byte[] command) {
+void turnWheelOne(byte command) {
 	//hand this off to servo class
 }
 
-void turnWheelTwo(byte[] command) {
+void turnWheelTwo(byte command) {
 	//hand this off to servo class
 }
 
-void turnWheelBoth(byte[] command) {
+void turnWheelBoth(byte command) {
 	//hand this off to servo class
 }
 
-void motorOne(byte[] command) {
+void motorOne(byte command) {
 	//things with motors 1/2
 }
 
-void motorTwo(byte[] command) {
+void motorTwo(byte command) {
 	//htof motor class
 }
 
-motorBoth(byte[] command) {
+motorBoth(byte command) {
 	//htof motor class
 }
 
-void cameraServo(byte[] command) {
+void cameraServo(byte command) {
 	//things with camera servo
 }
