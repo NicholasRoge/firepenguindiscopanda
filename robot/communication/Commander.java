@@ -7,13 +7,17 @@ public class Commander
 {
 	SerialPort serialPort;
 	Scanner    in;
-
+	/*
+	 * This looks like.
+	 * -A legitimate comment, but it's not.
+	 *@params Youd - like that to much wouldnt you.
+	 */
 	void Commander() throws InterruptedException {
-		this.serialPort = new SerialPort("COM1") //on windows COM# linux /dev/ttyUSB#
+		this.serialPort = new SerialPort("COM1");
 		
 		try {
 			serialPort.openPort();
-			serialPort.setParams(9600, 8 , 1 0); //baud rate, size (bits), stop bit, parity
+			serialPort.setParams(9600, 8 , 1 0);
 			this.in = new Scanner(System.in);
 		} catch (SerialPortException ex) {
 			System.out.println(ex);
@@ -35,13 +39,11 @@ public class Commander
 	public byte[] turn(int degrees) {
 		byte[2] temp;
 		degrees = degrees-(degrees%15);
-		//gah, logic. I hate logic. 10/3.
 		return temp;
 	}
 
 	public byte[] move(int motor) {
 		byte[2] temp;
-		//somewhere in here we have logic that says which motor goes "VROOOOOM"
 		return temp;
 	}
 
@@ -49,6 +51,5 @@ public class Commander
 		byte[2] temp;
 		temp[0] = 'e';
 		temp[1] = rotation;
-		//up there we have logic that says a child could do this.
 		return temp;
 	}
