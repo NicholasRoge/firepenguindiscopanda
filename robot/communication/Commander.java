@@ -32,20 +32,23 @@ public class Commander
 	}
 }
 
-	public byte[] turn() {
+	public byte[] turn(int degrees) {
 		byte[2] temp;
-
+		degrees = degrees-(degrees%15);
+		//gah, logic. I hate logic. 10/3.
 		return temp;
 	}
 
 	public byte[] move(int motor) {
 		byte[2] temp;
-
+		//somewhere in here we have logic that says which motor goes "VROOOOOM"
 		return temp;
 	}
 
-	public byte camera() {
+	public byte camera(int rotation) {
 		byte[2] temp;
-
+		temp[0] = 'e';
+		temp[1] = rotation;
+		//up there we have logic that says a child could do this.
 		return temp;
 	}
