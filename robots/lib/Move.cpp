@@ -7,9 +7,9 @@
 int Move::_pinServoOne = 0;
 int Move::_pinMotorOne = 0;
 int Move::_pinMotorTwo = 0;
-int Move::_stopNum     = 127;
-int Move::_forwardNum  = 180;
-int Move::_backwardNum = 0; 
+int Move::_stopNum     = 127; //stop nu
+int Move::_forwardNum  = 155; //255 max
+int Move::_backwardNum = 100; //0 minim
 
 Move::Move() {
 	motorOne.attach(_pinMotorOne);
@@ -32,16 +32,31 @@ public void lookLeft(byte amount) {
 }
 
 public void turnLeft(byte amount) {
-	//need to get my hands on a motor, the vex motors
-	//are actually servos (in desguise!)
+	motorOne.write(_forwardNum);
+	//get degrees rotated;
+	//when correct
+	stop();
 }
 
 public void turnRight(byte amount) {
-
+	motorTwo.write(_forwardNum);
+	//get degrees rotated
+	//when correct
+	stop();
 }
 
-public void move(byte amount) {
-	//negative numbers indicate backwards
+public void moveForward(byte amount) {
+	motorOne.write(_forwardNum);
+	motorTwo.write(_forwardNum);
+	delay(amount*10);
+	stop();
+}
+
+public void moveBackward(byte amount) {
+	motorOne.write(_backwardNum);
+	motorTwo.write(_backwardNum);
+	delay(amount*10);
+	stop();
 }
 
 public void stop() {

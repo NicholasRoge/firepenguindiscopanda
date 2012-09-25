@@ -14,7 +14,8 @@ class Move
 		~Move();
 		void lookRight();
 		void lookLeft();
-		void move();
+		void moveForward();
+		void moveBackward();
 		void turnRight();
 		void turnLeft();
 		void stop();
