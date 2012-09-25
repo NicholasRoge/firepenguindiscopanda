@@ -17,11 +17,15 @@ class Move
 		void move();
 		void turnRight();
 		void turnLeft();
+		void stop();
 
 	private:
 		static int _pinMotorOne;
 		static int _pinMotorTwo;
 		static int _pinServo;
+		static int _stopNum;
+		static int _forwardNum;
+		static int _backwardNum;
 		Servo servoOne;
 		Servo motorOne;
 		Servo motorTwo;
