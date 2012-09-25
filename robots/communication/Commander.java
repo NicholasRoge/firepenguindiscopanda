@@ -43,7 +43,6 @@ public class Commander
 
 	public void turnLeft(int degrees) {
 		char tl = 'w';
-		s
 	}
 
 	public void turnRight(int degrees) {
