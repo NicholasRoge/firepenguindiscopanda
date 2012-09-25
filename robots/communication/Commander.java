@@ -41,14 +41,19 @@ public class Commander
 	}
 }
 
-	public byte[] turn(int degrees) {
-
+	public void turnLeft(int degrees) {
+		char tl = 'w';
+		s
 	}
 
-	public byte[] move(int motor) {
-
+	public void turnRight(int degrees) {
+		char tr = 'q';
 	}
 
-	public byte camera(int rotation) {
+	public void moveForward(int motor) {
+		char mf = 'e';
+	}
 
+	public void moveBackward(int motor) {
+		char mb = 'r';
 	}
