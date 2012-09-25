@@ -1,10 +1,9 @@
 /*
  * Author: Nathan Mann
  * Copyright 2012, All rights reserved
- */I
+ */
 #include <Move.h>
 
-int Move::_pinServoOne = 0;
 int Move::_pinMotorOne = 0;
 int Move::_pinMotorTwo = 0;
 int Move::_stopNum     = 127; //stop nu
@@ -14,25 +13,16 @@ int Move::_backwardNum = 100; //0 minim
 Move::Move() {
 	motorOne.attach(_pinMotorOne);
 	motorTwo.attach(_pinMotorTwo);
-	servoOne.attach(_pinServoOne);
 }
 
 Move::~Move() {
 	motorOne.detach();
 	motorTwo.detach();
-	servoOne.detach();
-}
-
-public void lookRight(byte amount) {
-	servoOne.write(servoOne.read()+amount);
-}
-
-public void lookLeft(byte amount) {
-	servoOne.write(servoOne.read()-amount);
 }
 
 public void turnLeft(byte amount) {
 	motorOne.write(_forwardNum);
+	motorTwo.write(_backwardNum);
 	//get degrees rotated;
 	//when correct
 	stop();
@@ -40,6 +30,7 @@ public void turnLeft(byte amount) {
 
 public void turnRight(byte amount) {
 	motorTwo.write(_forwardNum);
+	motorOne.write(_backwardNum);
 	//get degrees rotated
 	//when correct
 	stop();

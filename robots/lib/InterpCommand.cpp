@@ -34,12 +34,6 @@ public void validateCommand(byte[] command) {
 		case 'r':
 			moveBackward(command[1]);
 			break;
-		case 't':
-			lookLeft(command[1]);
-			break;
-		case 'y':
-			lookRight(command[1]);
-			break;
 	}
 }
 
