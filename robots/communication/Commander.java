@@ -15,7 +15,7 @@ public class Commander
 	/*
 	 * This looks like.
 	 * -A legitimate comment, but it's not.
-	 *@params Youd - like that to much wouldnt you.
+	 *@ You'd - like that too much.
 	 */
 	void Commander() throws InterruptedException {
 		this.serialPort = new SerialPort("COM1");
