@@ -21,7 +21,7 @@ import com.strixa.fpdp.gui.ModelViewerWindow;
 import com.strixa.gl.Strixa3DElement;
 import com.strixa.gl.util.BlenderReader;
 import com.strixa.gl.util.PercentLoadedUpdateListener;
-import com.strixa.gl.util.WavefrontReader;
+import com.strixa.gl.util.WavefrontObjReader;
 
 /**
  * Main Class for the application.  Applet entry point.
@@ -30,11 +30,11 @@ import com.strixa.gl.util.WavefrontReader;
  */
 public class ModelViewer extends JApplet implements PercentLoadedUpdateListener{
     private static final long serialVersionUID = 5470628771514767566L;
-    private JPanel            __main_content;
-    private ModelViewerCanvas __model_viewer_canvas;
-    private WavefrontReader   __reader;
-    private JProgressBar      __progress_bar;
-    private ModelViewerWindow __window;
+    private JPanel             __main_content;
+    private ModelViewerCanvas  __model_viewer_canvas;
+    private WavefrontObjReader __reader;
+    private JProgressBar       __progress_bar;
+    private ModelViewerWindow  __window;
     
     
     /*Begin Initializer Methods*/
@@ -68,7 +68,7 @@ public class ModelViewer extends JApplet implements PercentLoadedUpdateListener{
         
         this._initializeGUI();
         
-        this.__reader = new WavefrontReader("C:/box.obj");
+        this.__reader = new WavefrontObjReader("C:/box.obj");
         this.__reader.addPercentLoadedUpdateListener(this);
         this.__reader.read();
     }

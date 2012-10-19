@@ -5,25 +5,14 @@
 package com.strixa.fpdp.gl;
 
 import java.awt.AWTException;
-import java.awt.Color;
-import java.awt.IllegalComponentStateException;
-import java.awt.MouseInfo;
-import java.awt.Point;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
-import java.util.List;
-
 import javax.media.opengl.GLCapabilities;
 
-import com.strixa.gl.Strixa2DCanvas;
 import com.strixa.gl.Strixa3DCanvas;
-import com.strixa.gl.Strixa3DElement;
 import com.strixa.gl.StrixaGLContext;
-import com.strixa.gl.StrixaPoint;
-import com.strixa.gl.StrixaPolygon;
-import com.strixa.gl.util.WavefrontReader;
 import com.strixa.util.Point2D;
 
 /**
