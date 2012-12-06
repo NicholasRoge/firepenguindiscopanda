@@ -20,17 +20,12 @@ import com.strixa.gl.Strixa3DElement;
 import com.strixa.gl.Strixa3DElement.CollisionDetectionMethod;
 import com.strixa.gl.StrixaGLContext;
 import com.strixa.gl.shapes.RectangularPrism;
+import com.strixa.math.StrixaMath;
 import com.strixa.util.Log;
 import com.strixa.util.Point2D;
 import com.strixa.util.Point3D;
 
-/**
- * TODO:  Write Class Description
- *
- * @author Nicholas Rogé
- */
 public class ModelViewerCanvas extends Strixa3DCanvas implements KeyListener{    
-    private Double           __last_x;
     private RectangularPrism __ground;
     private RectangularPrism __observer;
     private double           __observer_rotation;
@@ -44,9 +39,6 @@ public class ModelViewerCanvas extends Strixa3DCanvas implements KeyListener{
         this.setRenderDistance(1000);
         
         this.__ground = new RectangularPrism(100,1,100);
-            this.__ground.getMaterial().setAmbientColor(1,1,0);
-            this.__ground.getMaterial().setSpecularColor(1,1,0);
-            this.__ground.getMaterial().setSpecularCoefficient(50);
             this.__ground.setCollisionDetectionEnabled(false);
         this.addChild(this.__ground);
         
@@ -55,8 +47,8 @@ public class ModelViewerCanvas extends Strixa3DCanvas implements KeyListener{
         this.addChild(this.__observer);
         
         this.__ground.setCoordinates(0,0,0);
-        this.__observer.setCoordinates(49,-1,40);
-        this.shiftViewingArea(50,1,40.5);
+        this.__observer.setCoordinates(49,-1,25);
+        this.shiftViewingArea(50,1,25.5);
     }
     /*End Constructors*/
 
@@ -65,14 +57,6 @@ public class ModelViewerCanvas extends Strixa3DCanvas implements KeyListener{
         super.init(drawable);
         
         drawable.getGL().getGL2().glPolygonMode(GL2.GL_FRONT_AND_BACK,GL2.GL_POINT);
-        
-        /*drawable.getGL().getGL2().glFogi(GL2.GL_FOG_MODE,GL2.GL_EXP2);
-        drawable.getGL().getGL2().glFogfv(GL2.GL_FOG_COLOR,new float[]{.5f,.5f,.5f,1f},0);
-        drawable.getGL().getGL2().glFogf(GL2.GL_FOG_DENSITY,.01f);
-        drawable.getGL().getGL2().glHint(GL2.GL_FOG_HINT,GL2.GL_FASTEST);
-        drawable.getGL().getGL2().glFogf(GL2.GL_FOG_START,35f);
-        drawable.getGL().getGL2().glFogf(GL2.GL_FOG_END,50f);
-        drawable.getGL().getGL2().glEnable(GL2.GL_FOG);*/
     }
     /*End Overridden Methods*/
     
@@ -82,7 +66,6 @@ public class ModelViewerCanvas extends Strixa3DCanvas implements KeyListener{
 
     @Override public void mouseMoved(MouseEvent event){
         Point2D<Integer> mouse_origin = null;
-        double           pitch_delta = 0;
         Robot            robot = null;
         double           rotation_delta = 0;
         
@@ -92,12 +75,11 @@ public class ModelViewerCanvas extends Strixa3DCanvas implements KeyListener{
             robot = new Robot(); 
 
             rotation_delta = ((double)(event.getLocationOnScreen().getX() - mouse_origin.getX())/10);
+            
             this.__observer_rotation = this.getCameraRotation() - rotation_delta;             
             this.setCameraRotation(this.__observer_rotation);
-            this.__observer.rotate(-rotation_delta,(byte)0x2);
+            this.__observer.rotate(-rotation_delta,StrixaMath.AXIS_Y);
             
-            pitch_delta = ((double)(event.getLocationOnScreen().getY() - mouse_origin.getY())/10);
-            /*this.setCameraPitch(this.getCameraPitch() + pitch_delta);*/
             robot.mouseMove(mouse_origin.getX(),mouse_origin.getY());
         }catch(AWTException e) {
             Log.logEvent(Log.Type.WARNING,"There was a problem capturing the cursor.  User will be unable to rotate camera.");
@@ -106,11 +88,7 @@ public class ModelViewerCanvas extends Strixa3DCanvas implements KeyListener{
         }
     }
 
-    /* (non-Javadoc)
-     * @see java.awt.event.KeyListener#keyPressed(java.awt.event.KeyEvent)
-     */
-    @Override
-    public void keyPressed(KeyEvent event){
+    @Override public void keyPressed(KeyEvent event){
         final int             key_code = event.getKeyCode();
         final Point3D<Double> observer_coordinates = new Point3D<Double>(this.__observer.getCoordinates());
         
@@ -148,15 +126,15 @@ public class ModelViewerCanvas extends Strixa3DCanvas implements KeyListener{
                 break;
         }
         
-        /*for(Strixa3DElement element:this.getChildren()){
+        for(Strixa3DElement element:this.getChildren()){
             if(element != this.__observer){
-                if(this.__observer.isColliding(element,CollisionDetectionMethod.POINT)){
+                if(this.__observer.isColliding(element,CollisionDetectionMethod.BOUNDING_BOX)){
                     collision = true;
                     
                     break;
                 }
             }
-        }*/
+        }
         
         if(collision){
             this.__observer.setCoordinates(observer_coordinates.getX(),observer_coordinates.getY(),observer_coordinates.getZ());
@@ -178,17 +156,9 @@ public class ModelViewerCanvas extends Strixa3DCanvas implements KeyListener{
         }
     }
 
-    /* (non-Javadoc)
-     * @see java.awt.event.KeyListener#keyReleased(java.awt.event.KeyEvent)
-     */
-    @Override
-    public void keyReleased(KeyEvent e){
+    @Override public void keyReleased(KeyEvent e){
     }
 
-    /* (non-Javadoc)
-     * @see java.awt.event.KeyListener#keyTyped(java.awt.event.KeyEvent)
-     */
-    @Override
-    public void keyTyped(KeyEvent e){
+    @Override public void keyTyped(KeyEvent e){
     }
 }

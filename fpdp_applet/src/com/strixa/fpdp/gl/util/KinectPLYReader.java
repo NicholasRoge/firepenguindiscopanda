@@ -11,12 +11,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.strixa.fileio.AsciiFileReader;
 import com.strixa.gl.Strixa3DElement;
 import com.strixa.gl.StrixaPolygon;
 import com.strixa.gl.util.PercentLoadedUpdateListener;
 import com.strixa.gl.util.Vertex;
 import com.strixa.util.FileIO;
 import com.strixa.util.Log;
+import com.strixa.util.Point3D;
 
 /**
  * TODO:  Write Class Description
@@ -25,9 +27,9 @@ import com.strixa.util.Log;
  */
 public class KinectPLYReader extends AsciiFileReader{
     private int             __attribute_count;
-    private float           __color_blue_index;
-    private float           __color_green_index;
-    private float           __color_red_index;
+    private int             __color_blue_index;
+    private int             __color_green_index;
+    private int             __color_red_index;
     private boolean         __exited_header;
     private Strixa3DElement __point_cloud_object;
     private int             __vertex_count;
@@ -84,6 +86,9 @@ public class KinectPLYReader extends AsciiFileReader{
     
     /*Begin Other Methods*/
     protected boolean _processLine(int line_number,String[] arguments){
+        Vertex vertex = null;
+        
+        
         if(line_number == 1){
             if(arguments[0] == null || arguments[0].isEmpty() || !arguments[0].equals("ply")){
                 Log.logEvent(Log.Type.ERROR,"Given file is not PLY file.");
@@ -116,7 +121,19 @@ public class KinectPLYReader extends AsciiFileReader{
                     this.__y_index = this.__attribute_count;
                 }else if(arguments[2].equals("z")){
                     this.__z_index = this.__attribute_count;
-                }
+                }else if(arguments[2].equals("nx")){
+                    this.__x_normal_index = this.__attribute_count;
+                }else if(arguments[2].equals("ny")){
+                    this.__y_normal_index = this.__attribute_count;
+                }else if(arguments[2].equals("nz")){
+                    this.__z_normal_index = this.__attribute_count;
+                }else if(arguments[2].equals("red")){
+                    this.__color_red_index = this.__attribute_count;
+                }else if(arguments[2].equals("green")){
+                    this.__color_green_index = this.__attribute_count;
+                }else if(arguments[2].equals("blue")){
+                    this.__color_blue_index = this.__attribute_count;
+                }                
                 
                 this.__attribute_count++;
             }else if(arguments[0].equals("end_header")){
@@ -135,12 +152,30 @@ public class KinectPLYReader extends AsciiFileReader{
                         return false;
                     }
                     
-                    this.__vertices.add(new Vertex(
+                    vertex = new Vertex(
                         Double.parseDouble(arguments[this.__x_index]),
                         Double.parseDouble(arguments[this.__y_index]),
                         Double.parseDouble(arguments[this.__z_index]),
                         1
-                    ));
+                    );
+                    if(this.__x_normal_index != -1 && this.__y_normal_index != -1  && this.__z_normal_index != -1 ){
+                        vertex.setNormal(
+                            new Point3D<Double>(
+                                Double.parseDouble(arguments[this.__x_normal_index]),
+                                Double.parseDouble(arguments[this.__y_normal_index]),
+                                Double.parseDouble(arguments[this.__z_normal_index])
+                            )
+                        );
+                    }
+                    if(this.__color_red_index != -1 && this.__color_green_index != -1 && this.__color_blue_index != -1){
+                        vertex.setColor(
+                            Float.parseFloat(arguments[this.__color_red_index])/255f,
+                            Float.parseFloat(arguments[this.__color_green_index])/255f,
+                            Float.parseFloat(arguments[this.__color_blue_index])/255f
+                        );
+                    }
+                    
+                    this.__vertices.add(vertex);
                     
                     this.__vertices_read++;
                     if(this.__vertices_read == this.__vertex_count){
@@ -148,7 +183,6 @@ public class KinectPLYReader extends AsciiFileReader{
                         double min_x = 0;
                         double min_y = 0;
                         double min_z = 0;
-                        Vertex vertex = null;
                         
                         
                         for(int index = 0,end_index = this.__vertices.size() - 1;index <= end_index;index++){
